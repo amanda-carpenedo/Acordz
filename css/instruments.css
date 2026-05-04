@@ -1,0 +1,237 @@
+/* ─── Instruments Section ────────────────────────────────────── */
+.instruments-section {
+  padding: 56px 0;
+  background: var(--color-surface);
+  position: relative;
+}
+
+/* Pseudo-element que faz o wipe esquerda → direita */
+.instruments-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.instruments-section:has(.violao-wrapper:hover)::before  { background: oklch(94% 0.04 260); }
+.instruments-section:has(.piano-wrapper:hover)::before   { background: oklch(94% 0.04 310); }
+.instruments-section:has(.flauta-wrapper:hover)::before  { background: oklch(95% 0.06 70);  }
+.instruments-section:has(.ukulele-wrapper:hover)::before { background: oklch(94% 0.05 25);  }
+
+.instruments-section:has(*:hover)::before {
+  transform: scaleX(1);
+}
+
+/* Conteúdo acima do pseudo-element */
+.instruments-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.instruments-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.instrument-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 30px 16px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.instrument-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.16);
+}
+
+.instrument-card.violao  { background: oklch(50% 0.20 260); } /* azul escuro — personagem button */
+.instrument-card.piano   { background: oklch(50% 0.20 310); } /* roxo escuro — background-roxo    */
+.instrument-card.flauta  { background: oklch(55% 0.22 70);  } /* âmbar escuro — background-amarelo */
+.instrument-card.ukulele { background: oklch(50% 0.22 25);  } /* coral escuro — background-vermelho */
+
+/* ─── Violão hover character ─────────────────────────────────── */
+
+.instruments-grid { align-items: end; }
+
+.violao-wrapper {
+  position: relative;
+  padding-top: 165px;  /* espaço para o personagem aparecer acima do card */
+}
+
+/* Base compartilhada pelos dois imgs */
+.violao-char,
+.violao-hands {
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* aspect-ratio garante escala proporcional independente da largura */
+  aspect-ratio: 413 / 264;
+  width: 100%;
+  top: 120px;          /* padrão: escondido dentro do card (coberto pelo z-index 2) */
+  opacity: 0;
+  pointer-events: none;
+  transition:0.2s ease;
+}
+
+/* Corpo atrás do card */
+.violao-char { z-index: 1; }
+
+/* Mãos por cima do card
+   clip-path em % = proporcional ao SVG, não depende da largura da tela
+   58.7% = onde a área do card começa no SVG (linha que separa personagem do botão)
+   Ajuste fino: aumente inset(topo) se mostrar demais do corpo
+                diminua inset(base) se as mãos ficarem curtas */
+.violao-hands {
+  z-index: 4;
+  clip-path: inset(30% 0% 0% 0%);
+/*   transition-delay: 0s, 0.08s; */
+}
+
+.violao-wrapper:hover .violao-char,
+.violao-wrapper:hover .violao-hands {
+  top: 20px;   /* ← ajuste se a cabeça ainda cortar ou o card não alinhar */
+  opacity: 1;
+}
+
+/* Card fica entre os dois imgs */
+.violao-wrapper .instrument-card.violao {
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── Piano hover character ──────────────────────────────────── */
+
+.piano-wrapper {
+  position: relative;
+  padding-top: 170px;
+}
+
+.piano-char,
+.piano-hands {
+  position: absolute;
+  left: 0;
+  right: 0;
+  aspect-ratio: 410 / 262;
+  width: 100%;
+  top: 120px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+.piano-char { z-index: 1; }
+
+.piano-hands {
+  z-index: 4;
+  clip-path: inset(30% 0% 0% 0%);
+}
+
+.piano-wrapper:hover .piano-char,
+.piano-wrapper:hover .piano-hands {
+  top: 20px;
+  opacity: 1;
+}
+
+.piano-wrapper .instrument-card.piano {
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── Ukulele hover character ────────────────────────────────── */
+
+.ukulele-wrapper {
+  position: relative;
+  padding-top: 125px;
+}
+
+.ukulele-char,
+.ukulele-hands {
+  position: absolute;
+  left: 0;
+  right: 0;
+  aspect-ratio: 541 / 251;
+  width: 100%;
+  top: 120px;
+  opacity: 0;
+  pointer-events: none;
+  transition:0.2s ease;
+}
+
+.ukulele-char { z-index: 1; }
+
+.ukulele-hands {
+  z-index: 4;
+  clip-path: inset(30% 0% 0% 0%);
+}
+
+.ukulele-wrapper:hover .ukulele-char,
+.ukulele-wrapper:hover .ukulele-hands {
+  top: 20px;
+  opacity: 1;
+}
+
+.ukulele-wrapper .instrument-card.ukulele {
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── Flauta hover character ─────────────────────────────────── */
+
+.flauta-wrapper {
+  position: relative;
+  padding-top: 173px;
+}
+
+.flauta-char,
+.flauta-hands {
+  position: absolute;
+  left: 0;
+  right: 0;
+  aspect-ratio: 412 / 268;
+  width: 100%;
+  top: 120px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+.flauta-char { z-index: 1; }
+
+.flauta-hands {
+  z-index: 4;
+  clip-path: inset(30% 0% 0% 0%);
+}
+
+.flauta-wrapper:hover .flauta-char,
+.flauta-wrapper:hover .flauta-hands {
+  top: 20px;
+  opacity: 1;
+}
+
+.flauta-wrapper .instrument-card.flauta {
+  position: relative;
+  z-index: 2;
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+
+.inst-icon {
+  width: 60px; height: 60px;
+  background: rgba(255,255,255,0.22);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.9rem;
+}

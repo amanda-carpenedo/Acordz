@@ -1,0 +1,129 @@
+/* ─── Footer ──────────────────────────────────────────────────── */
+.footer {
+  padding-top: 56px;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ── Brand (logo + tagline + redes sociais) ── */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-logo {
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.footer-tagline {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  max-width: 22ch;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.footer-social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+
+.footer-social-link svg {
+  width: 17px;
+  height: 17px;
+}
+
+.footer-social-link:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: oklch(from var(--color-primary) l c h / 0.06);
+}
+
+/* ── Colunas de links ── */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-col-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--color-text-muted);
+  margin: 0 0 14px;
+}
+
+.footer-col-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.footer-col-nav a {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  transition: color 0.15s;
+}
+
+.footer-col-nav a:hover {
+  color: var(--color-text-primary);
+}
+
+/* ── Barra inferior ── */
+.footer-bottom {
+  margin-top: 48px;
+  border-top: 1px solid var(--color-border);
+  padding: 18px 0;
+}
+
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Responsivo ── */
+@media (max-width: 640px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,101 @@
+/* ─── Categories Section ─────────────────────────────────────── */
+.categories-section {
+  padding: 64px 0;
+  background: var(--color-bg);
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cat-card {
+  border-radius: var(--radius-card);
+  padding: 32px 28px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 230px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.16);
+}
+
+.cat-card.jogos       { background: var(--string-4); }
+
+.cat-card .cat-watermark {
+  position: absolute;
+  top: -28px;
+  right: -10px;
+  width: 125px;
+  height: 190px;
+  opacity: 0.28;
+  pointer-events: none;
+  transform: scaleX(-1.4) rotate(30deg);
+  
+}
+.cat-card.partituras  { background: var(--string-1); }
+.cat-card.ebooks      { background: var(--string-2); }
+
+.cat-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.26);
+  border-radius: 999px;
+  padding: 3px 10px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.cat-icon-wrap {
+  position: absolute;
+  right: 24px; top: 24px;
+  width: 56px; height: 56px;
+  background: rgba(255,255,255,0.22);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+.cat-card h2 {
+  font-weight: 800;
+  font-size: 1.6rem;
+  margin-top: 14px;
+  line-height: 1.1;
+
+}
+
+.cat-card p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  line-height: 1.45;
+  flex: 1;
+}
+
+.cat-btn {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 9px 20px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.22);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  transition: background 0.15s;
+  width: fit-content;
+}
+
+.cat-btn:hover { background: rgba(255,255,255,0.36); }
