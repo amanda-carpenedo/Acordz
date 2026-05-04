@@ -2,6 +2,9 @@
 .featured-section {
   padding: 64px 0;
   background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .products-grid {
@@ -110,3 +113,21 @@
 }
 
 .btn-comprar:hover { opacity: 0.78; }
+
+.btn-saiba-mais{
+  margin: 50px 0;
+  width: fit-content;
+  background: oklch(68% 0.18 25);
+  appearance: none;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  color: var(--color-bg);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.90rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn-saiba-mais:hover { opacity: 0.78; }
