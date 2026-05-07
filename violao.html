@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Violões — Tum Tum Música</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/violao.css" />
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        <span class="logo-mark">♪</span>
+        Tum Tum Música
+      </div>
+      <div class="nav-links">
+        <a href="#">Jogos</a>
+        <a href="#">Partituras</a>
+        <a href="#">Ebooks</a>
+        <a href="#" class="active">Violões</a>
+        <a href="#">Sobre</a>
+      </div>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" aria-label="Buscar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+          </svg>
+        </button>
+        <button class="nav-icon-btn" aria-label="Carrinho">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-count">2</span>
+        </button>
+        <button class="btn btn-primary">Entrar</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Localização">
+      <a href="#">Início</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <a href="#">Catálogo</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <span class="here" aria-current="page">Violões</span>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <span class="hero-tag"><span class="dot"></span> Corda Lá · Categoria Violões</span>
+        <h1>Violões para <span class="accent">pequenos músicos</span> começarem com o pé direito.</h1>
+        <p>Modelos especialmente pensados para crianças e iniciantes — tamanhos reduzidos, cordas suaves nos dedos e manuais ilustrados que tornam as primeiras notas em momentos divertidos.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary">Ver todos os modelos</button>
+          <button class="btn btn-ghost">Guia de tamanhos</button>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <span class="stat-num">24</span>
+            <span class="stat-label">modelos disponíveis</span>
+          </div>
+          <div>
+            <span class="stat-num">3+</span>
+            <span class="stat-label">faixa etária mínima</span>
+          </div>
+          <div>
+            <span class="stat-num">4.8★</span>
+            <span class="stat-label">avaliação média</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mascote: cachorro azul tocando violão -->
+      <div class="mascot-wrap" aria-hidden="true">
+        <div class="mascot-disc"></div>
+        <span class="mascot-note n1">♪</span>
+        <span class="mascot-note n2">♫</span>
+        <span class="mascot-note n3">♩</span>
+        <svg class="mascot-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="200" cy="370" rx="120" ry="14" fill="oklch(45% 0.13 260 / 0.25)"/>
+          <ellipse cx="200" cy="320" rx="115" ry="50" fill="oklch(72% 0.16 260)"/>
+          <ellipse cx="200" cy="320" rx="80" ry="32" fill="oklch(85% 0.10 260)"/>
+          <path d="M 110 280 Q 110 200 200 195 Q 290 200 290 280 Z" fill="oklch(72% 0.16 260)"/>
+          <ellipse cx="135" cy="355" rx="32" ry="16" fill="oklch(72% 0.16 260)"/>
+          <ellipse cx="135" cy="353" rx="22" ry="10" fill="oklch(85% 0.10 260)"/>
+          <ellipse cx="265" cy="355" rx="32" ry="16" fill="oklch(72% 0.16 260)"/>
+          <ellipse cx="265" cy="353" rx="22" ry="10" fill="oklch(85% 0.10 260)"/>
+          <path d="M 130 100 Q 130 50 200 50 Q 270 50 270 100 L 270 175 Q 270 215 200 215 Q 130 215 130 175 Z" fill="oklch(72% 0.16 260)"/>
+          <path d="M 130 90 Q 105 105 100 145 Q 105 165 125 160 Z" fill="oklch(65% 0.17 260)"/>
+          <path d="M 270 90 Q 295 105 300 145 Q 295 165 275 160 Z" fill="oklch(65% 0.17 260)"/>
+          <ellipse cx="200" cy="160" rx="38" ry="28" fill="oklch(88% 0.08 260)"/>
+          <ellipse cx="200" cy="142" rx="9" ry="6.5" fill="oklch(22% 0.020 60)"/>
+          <path d="M 200 150 Q 200 168 188 170" stroke="oklch(22% 0.020 60)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M 200 150 Q 200 168 212 170" stroke="oklch(22% 0.020 60)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M 195 170 Q 200 180 205 170 Z" fill="oklch(70% 0.18 25)"/>
+          <ellipse cx="175" cy="115" rx="6" ry="8" fill="oklch(22% 0.020 60)"/>
+          <ellipse cx="225" cy="115" rx="6" ry="8" fill="oklch(22% 0.020 60)"/>
+          <circle cx="177" cy="112" r="2" fill="white"/>
+          <circle cx="227" cy="112" r="2" fill="white"/>
+          <ellipse cx="155" cy="145" rx="10" ry="5" fill="oklch(75% 0.12 25 / 0.5)"/>
+          <ellipse cx="245" cy="145" rx="10" ry="5" fill="oklch(75% 0.12 25 / 0.5)"/>
+          <!-- Violão -->
+          <ellipse cx="200" cy="290" rx="68" ry="58" fill="oklch(55% 0.12 60)"/>
+          <ellipse cx="200" cy="290" rx="68" ry="58" fill="none" stroke="oklch(40% 0.10 60)" stroke-width="2"/>
+          <ellipse cx="215" cy="300" rx="50" ry="42" fill="oklch(48% 0.13 60 / 0.4)"/>
+          <circle cx="200" cy="285" r="14" fill="oklch(20% 0.020 60)"/>
+          <circle cx="200" cy="285" r="14" fill="none" stroke="oklch(70% 0.14 60)" stroke-width="2"/>
+          <rect x="180" y="312" width="40" height="6" rx="2" fill="oklch(30% 0.05 60)"/>
+          <rect x="195" y="200" width="14" height="80" fill="oklch(45% 0.10 60)" rx="2"/>
+          <rect x="195" y="200" width="14" height="80" fill="none" stroke="oklch(35% 0.09 60)" stroke-width="1"/>
+          <line x1="195" y1="218" x2="209" y2="218" stroke="oklch(85% 0.05 80)" stroke-width="1"/>
+          <line x1="195" y1="232" x2="209" y2="232" stroke="oklch(85% 0.05 80)" stroke-width="1"/>
+          <line x1="195" y1="246" x2="209" y2="246" stroke="oklch(85% 0.05 80)" stroke-width="1"/>
+          <line x1="195" y1="260" x2="209" y2="260" stroke="oklch(85% 0.05 80)" stroke-width="1"/>
+          <rect x="190" y="178" width="24" height="26" fill="oklch(35% 0.08 60)" rx="3"/>
+          <circle cx="187" cy="184" r="2.5" fill="oklch(85% 0.04 80)"/>
+          <circle cx="217" cy="184" r="2.5" fill="oklch(85% 0.04 80)"/>
+          <circle cx="187" cy="195" r="2.5" fill="oklch(85% 0.04 80)"/>
+          <circle cx="217" cy="195" r="2.5" fill="oklch(85% 0.04 80)"/>
+          <!-- 6 cordas — cores do design system -->
+          <line x1="198" y1="204" x2="190" y2="318" stroke="oklch(68% 0.18 25)"  stroke-width="1"/>
+          <line x1="200" y1="204" x2="194" y2="318" stroke="oklch(68% 0.18 70)"  stroke-width="1"/>
+          <line x1="202" y1="204" x2="198" y2="318" stroke="oklch(68% 0.18 145)" stroke-width="1"/>
+          <line x1="204" y1="204" x2="202" y2="318" stroke="oklch(68% 0.18 200)" stroke-width="1"/>
+          <line x1="206" y1="204" x2="206" y2="318" stroke="oklch(68% 0.18 260)" stroke-width="1.2"/>
+          <line x1="208" y1="204" x2="210" y2="318" stroke="oklch(68% 0.18 310)" stroke-width="1"/>
+          <!-- Braços -->
+          <path d="M 130 240 Q 150 215 195 215 L 200 240 Q 175 245 145 270 Q 130 270 125 255 Z" fill="oklch(72% 0.16 260)"/>
+          <ellipse cx="148" cy="232" rx="14" ry="12" fill="oklch(85% 0.10 260)"/>
+          <path d="M 270 240 Q 250 270 240 290 Q 245 305 260 300 Q 285 280 295 250 Z" fill="oklch(72% 0.16 260)"/>
+          <ellipse cx="245" cy="298" rx="14" ry="12" fill="oklch(85% 0.10 260)"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <button class="filter-chip active">Todos <span class="count">24</span></button>
+      <button class="filter-chip">Iniciante <span class="count">12</span></button>
+      <button class="filter-chip">Infantil <span class="count">8</span></button>
+      <button class="filter-chip">Intermediário <span class="count">4</span></button>
+      <button class="filter-chip">Acessórios</button>
+      <div class="toolbar-right">
+        <span>Ordenar por:</span>
+        <select aria-label="Ordenar por">
+          <option>Mais populares</option>
+          <option>Menor preço</option>
+          <option>Maior preço</option>
+          <option>Lançamentos</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Catálogo -->
+    <div class="catalog">
+      <aside class="filters-aside">
+        <div class="filter-group">
+          <h3>Tamanho</h3>
+          <label><input type="checkbox" checked /> 1/4 (3-5 anos) <span class="count">6</span></label>
+          <label><input type="checkbox" checked /> 1/2 (5-8 anos) <span class="count">9</span></label>
+          <label><input type="checkbox" />         3/4 (8-11 anos) <span class="count">7</span></label>
+          <label><input type="checkbox" />         4/4 (12+) <span class="count">2</span></label>
+        </div>
+        <div class="filter-group">
+          <h3>Tipo de corda</h3>
+          <label><input type="checkbox" checked /> Nylon (suave) <span class="count">18</span></label>
+          <label><input type="checkbox" />         Aço <span class="count">6</span></label>
+        </div>
+        <div class="filter-group">
+          <h3>Faixa de preço</h3>
+          <div class="price-range">
+            <input type="text" class="price-input" placeholder="R$ 0"  value="R$ 150" />
+            <span aria-hidden="true">—</span>
+            <input type="text" class="price-input" placeholder="R$ ∞" value="R$ 800" />
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3>Cor</h3>
+          <div class="color-swatches">
+            <button class="color-swatch" aria-label="Natural" style="background:oklch(70% 0.10 75); border-color:var(--theme);"></button>
+            <button class="color-swatch" aria-label="Preto"   style="background:oklch(25% 0.02 60);"></button>
+            <button class="color-swatch" aria-label="Azul"    style="background:var(--string-5);"></button>
+            <button class="color-swatch" aria-label="Coral"   style="background:var(--string-1);"></button>
+            <button class="color-swatch" aria-label="Verde"   style="background:var(--string-3);"></button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3>Inclui</h3>
+          <label><input type="checkbox" checked /> Capa <span class="count">14</span></label>
+          <label><input type="checkbox" />         Afinador <span class="count">9</span></label>
+          <label><input type="checkbox" checked /> Manual ilustrado <span class="count">22</span></label>
+          <label><input type="checkbox" />         Curso online <span class="count">7</span></label>
+        </div>
+      </aside>
+
+      <div class="product-grid" id="product-grid"></div>
+    </div>
+
+    <!-- Paginação -->
+    <nav class="pagination" aria-label="Páginas">
+      <button class="page-btn" aria-label="Anterior">‹</button>
+      <button class="page-btn active" aria-current="page">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">4</button>
+      <button class="page-btn" aria-label="Próxima">›</button>
+    </nav>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-band">
+    <div class="container footer-inner">
+      <div>
+        <h2>Receba dicas e novidades musicais</h2>
+        <p>Atividades gratuitas, descontos e lançamentos no seu e-mail.</p>
+      </div>
+      <form class="newsletter" onsubmit="event.preventDefault();">
+        <input type="email" placeholder="seu@email.com" required aria-label="Seu e-mail" />
+        <button class="btn btn-primary" type="submit">Quero receber</button>
+      </form>
+    </div>
+  </footer>
+
+  <script src="js/violao.js"></script>
+</body>
+</html>

@@ -2,7 +2,6 @@
   const stage    = document.getElementById('stage');
   const path     = document.getElementById('cable-path');
   const corePath = document.getElementById('cable-core');
-  const jack     = document.getElementById('jack');
   const pianoImg = document.getElementById('piano-img');
   const cableSvg = document.getElementById('cable-svg');
 

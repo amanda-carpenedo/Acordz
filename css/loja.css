@@ -50,44 +50,6 @@ body::before {
   z-index: 0;
 }
 
-/* ── Nav ── */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 50;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 18px 42px;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  color: var(--ink-dim);
-  backdrop-filter: blur(8px);
-  background: oklch(97% 0.018 85 / 0.6);
-  border-bottom: 1px solid oklch(88% 0.018 75 / 0.6);
-}
-.nav .brand {
-  display: flex; align-items: center; gap: 10px;
-  color: var(--ink);
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 1rem;
-  letter-spacing: -0.01em;
-}
-.nav .brand .dot {
-  width: 12px; height: 12px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--s1), var(--s2));
-  box-shadow: 0 0 0 3px oklch(68% 0.18 70 / 0.2);
-}
-.nav .links { display: flex; gap: 24px; font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; letter-spacing: 0; }
-.nav .links a { color: var(--ink-dim); text-decoration: none; transition: color .2s; }
-.nav .links a:hover { color: var(--ink); }
-.nav .cart {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  background: var(--ink);
-  color: var(--bg);
-  padding: 8px 14px;
-  border-radius: 999px;
-}
 
 /* ── Progress indicator ── */
 .progress {
@@ -126,6 +88,7 @@ body::before {
   gap: 40px;
   align-items: center;
 }
+
 .hero h1 {
   font-family: var(--font-heading);
   font-size: clamp(2.4rem, 6.5vw, 5rem);
@@ -211,6 +174,15 @@ body::before {
   max-width: 500px;
 }
 
+.hero-partitura {
+  padding-top: 120px;
+}
+
+.img-partitura {
+  max-width: 400px;
+}
+
+
 .hero .scroll-cue {
   position: absolute;
   left: 8vw; bottom: 28px;
@@ -262,7 +234,7 @@ body::before {
 .stop {
   position: relative;
   min-height: 720px;
-  padding: 0 15vw;
+  padding: 0 8vw;
   display: flex;
   align-items: center;
 }
@@ -272,7 +244,7 @@ body::before {
 /* ── Product card ── */
 .card {
   position: relative;
-  width: min(440px, 40vw);
+  width: min(370px, 40vw);
   padding: 28px 28px 24px;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -282,6 +254,7 @@ body::before {
   transform: translateY(40px);
   transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.2,.8,.2,1);
   box-shadow: 0 20px 50px oklch(40% 0.05 60 / 0.08);
+  margin: 0 20px
 }
 .stop.in .card { opacity: 1; transform: translateY(0); }
 
@@ -504,18 +477,6 @@ body::before {
   margin: 0 auto 32px;
   line-height: 1.55;
   font-size: 1.05rem;
-}
-
-/* ── Footer ── */
-footer {
-  position: relative; z-index: 3;
-  padding: 32px 8vw;
-  border-top: 1px solid var(--border);
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--ink-mute);
-  letter-spacing: 0.04em;
 }
 
 /* ── Cable ── */
