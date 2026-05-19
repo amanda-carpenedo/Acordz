@@ -55,10 +55,10 @@
   box-shadow: 0 12px 32px rgba(0,0,0,0.16);
 }
 
-.instrument-card.violao  { background: oklch(50% 0.20 260); } /* azul escuro — personagem button */
-.instrument-card.piano   { background: oklch(50% 0.20 310); } /* roxo escuro — background-roxo    */
-.instrument-card.flauta  { background: oklch(55% 0.22 70);  } /* âmbar escuro — background-amarelo */
-.instrument-card.ukulele { background: oklch(50% 0.22 25);  } /* coral escuro — background-vermelho */
+.instrument-card.violao  { background: oklch(68% 0.18 260); } /* azul escuro — personagem button */
+.instrument-card.piano   { background: oklch(68% 0.18 310); } /* roxo escuro — background-roxo    */
+.instrument-card.flauta  { background: oklch(68% 0.18 70);  } /* âmbar escuro — background-amarelo */
+.instrument-card.ukulele { background: oklch(68% 0.18 25);  } /* coral escuro — background-vermelho */
 
 /* ─── Violão hover character ─────────────────────────────────── */
 

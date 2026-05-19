@@ -33,10 +33,22 @@
         <a class="nav-logo" href="/">Acordz</a>
         <ul class="nav-links">
           <li><a href="/" class="active" aria-current="page">Home</a></li>
-          <a href="#">Jogos</a>
-          <a href="#">Partituras</a>
-          <a href="#">Ebooks</a>
-          <a href="#">Sobre</a>
+          <li><a href="jogos-musicais.html">Jogos</a></li>
+          <li><a href="partituras.html">Partituras</a></li>
+          <li><a href="ebook.html">Ebooks</a></li>
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              Instrumentos
+              <svg class="dropdown-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            </button>
+            <ul class="nav-dropdown-menu" role="menu">
+              <li role="none"><a href="violao.html" role="menuitem">Violão</a></li>
+              <li role="none"><a href="flauta.html" role="menuitem">Flauta</a></li>
+              <li role="none"><a href="piano.html" role="menuitem">Piano</a></li>
+              <li role="none"><a href="ukulele.html" role="menuitem">Ukulele</a></li>
+            </ul>
+          </li>
+          <li><a href="sobre.html">Sobre</a></li>
         </ul>
         <div class="nav-actions">
           <button class="nav-cart" aria-label="Carrinho de compras">
@@ -88,21 +100,9 @@
       <div class="container">
         <div class="categories-grid">
           <article class="cat-card jogos">
-            <svg
-              class="cat-watermark"
-              viewBox="0 0 90 155"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                d="M 65 8 C 88 2, 98 35, 78 55 C 58 75, 18 68, 18 48 C 18 28, 48 12, 68 28 C 88 44, 85 85, 65 115 C 48 140, 28 150, 30 162"
-                stroke="white"
-                stroke-width="11"
-                stroke-linecap="round"
-                fill="none"
-              />
-            </svg>
+            <div class="cat-icon-wrap">
+              <img src="icons/claps.svg" alt="Claps" class="claps-icon" />
+            </div>
             <h2>Jogos Musicais</h2>
             <p>
               Aprenda brincando e divirta-se jogando com músicas que as crianças
@@ -112,21 +112,9 @@
           </article>
 
           <article class="cat-card partituras">
-            <svg
-              class="cat-watermark"
-              viewBox="0 0 90 155"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                d="M 65 8 C 88 2, 98 35, 78 55 C 58 75, 18 68, 18 48 C 18 28, 48 12, 68 28 C 88 44, 85 85, 65 115 C 48 140, 28 150, 30 162"
-                stroke="white"
-                stroke-width="11"
-                stroke-linecap="round"
-                fill="none"
-              />
-            </svg>
+            <div class="cat-icon-wrap">
+              <img src="icons/rhythm.svg" alt="Rhythm" class="rhythm-icon" />
+            </div>
             <h2>Partituras</h2>
             <p>
               Arranjos feitos e detalhados para iniciantes, com repertório
@@ -136,21 +124,9 @@
           </article>
 
           <article class="cat-card ebooks">
-            <svg
-              class="cat-watermark"
-              viewBox="0 0 90 155"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                d="M 65 8 C 88 2, 98 35, 78 55 C 58 75, 18 68, 18 48 C 18 28, 48 12, 68 28 C 88 44, 85 85, 65 115 C 48 140, 28 150, 30 162"
-                stroke="white"
-                stroke-width="11"
-                stroke-linecap="round"
-                fill="none"
-              />
-            </svg>
+            <div class="cat-icon-wrap">
+              <img src="icons/book.svg" alt="Ebook" class="ebook-icon" />
+            </div>
             <h2>Ebooks</h2>
             <p>
               Materiais de educação musical infantil para usar em casa e na sala
@@ -184,7 +160,7 @@
             />
             <a
               class="instrument-card violao"
-              href="/jogos?instrumento=violao"
+              href="violao.html"
               aria-label="Violão"
             >
               <span>Violão</span>
@@ -205,7 +181,7 @@
             />
             <a
               class="instrument-card piano"
-              href="/jogos?instrumento=piano"
+              href="piano.html"
               aria-label="Piano"
             >
               <span>Piano</span>
@@ -226,7 +202,7 @@
             />
             <a
               class="instrument-card flauta"
-              href="/jogos?instrumento=flauta"
+              href="flauta.html"
               aria-label="Flauta Doce"
             >
               <span>Flauta Doce</span>
@@ -247,7 +223,7 @@
             />
             <a
               class="instrument-card ukulele"
-              href="/jogos?instrumento=ukulele"
+              href="ukulele.html"
               aria-label="Ukulele"
             >
               <span>Ukulele</span>
@@ -543,5 +519,18 @@
       crossorigin="anonymous"
     ></script>
     <script type="text/babel" src="js/main.js"></script>
+    <script>
+      document.querySelectorAll('.nav-dropdown-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', String(!expanded));
+        });
+        document.addEventListener('click', function(e) {
+          if (!btn.closest('.nav-dropdown').contains(e.target)) {
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    </script>
   </body>
 </html>

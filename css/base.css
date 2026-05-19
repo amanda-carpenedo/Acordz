@@ -11,6 +11,16 @@ body {
   overflow-x: hidden;
 }
 
+.partitura-background{
+  background: oklch(68% 0.1797 25.005 / 0.276);
+}
+.jogos-background{
+  background: oklch(67.433% 0.17292 259.401 / 0.229);
+}
+.ebook-background{
+  background: oklch(68.485% 0.15659 62.684 / 0.209);
+}
+
 a    { text-decoration: none; color: inherit; }
 ul   { list-style: none; }
 img  { display: block; max-width: 100%; }

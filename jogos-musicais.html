@@ -10,23 +10,35 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/loja.css" /> 
+    <link rel="stylesheet" href="css/loja.css" />
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/footer.css" />
   </head>
-  <body>
+  <body class="jogos-background">
     <!-- ─── Navbar ────────────────────────────────────────────────── -->
     <nav class="navbar" aria-label="Navegação principal">
       <div class="nav-inner">
         <a class="nav-logo" href="/">Acordz</a>
         <ul class="nav-links">
           <li><a href="/" class="active" aria-current="page">Home</a></li>
-          <a href="#">Jogos</a>
-          <a href="#">Partituras</a>
-          <a href="#">Ebooks</a>
-          <a href="#">Sobre</a>
+          <li><a href="jogos-musicais.html">Jogos</a></li>
+          <li><a href="partituras.html">Partituras</a></li>
+          <li><a href="ebook.html">Ebooks</a></li>
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              Instrumentos
+              <svg class="dropdown-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            </button>
+            <ul class="nav-dropdown-menu" role="menu">
+              <li role="none"><a href="violao.html" role="menuitem">Violão</a></li>
+              <li role="none"><a href="flauta.html" role="menuitem">Flauta</a></li>
+              <li role="none"><a href="piano.html" role="menuitem">Piano</a></li>
+              <li role="none"><a href="ukulele.html" role="menuitem">Ukulele</a></li>
+            </ul>
+          </li>
+          <li><a href="sobre.html">Sobre</a></li>
         </ul>
         <div class="nav-actions">
           <button class="nav-cart" aria-label="Carrinho de compras">
@@ -62,7 +74,7 @@
       <div>
         <h1>
           Descubra a música <span class="accent">brincando.</span><br />
-          Aprender pode ser muito <span class="wavy">divertido.</span>
+          Aprender pode ser muito <span class="wavy">divertido!</span>
         </h1>
       </div>
 
@@ -496,7 +508,7 @@
       </a>
     </section>
 
-  <!-- ─── Footer ────────────────────────────────────────────────── -->
+    <!-- ─── Footer ────────────────────────────────────────────────── -->
     <footer class="footer" aria-label="Rodapé">
       <div class="container footer-inner">
         <!-- Brand + redes sociais -->
@@ -582,5 +594,18 @@
     </footer>
 
     <script src="./js/loja.js" defer></script>
+    <script>
+      document.querySelectorAll('.nav-dropdown-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', String(!expanded));
+        });
+        document.addEventListener('click', function(e) {
+          if (!btn.closest('.nav-dropdown').contains(e.target)) {
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    </script>
   </body>
 </html>
