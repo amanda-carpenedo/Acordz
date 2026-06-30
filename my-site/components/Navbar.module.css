@@ -1,0 +1,199 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  background: rgba(251, 246, 236, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navLogo {
+  font-weight: 900;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  flex-shrink: 0;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  justify-content: center;
+  list-style: none;
+}
+
+.navLinks > li {
+  display: flex;
+  align-items: center;
+}
+
+.navLinks a {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  padding: 6px 14px;
+  border-radius: 999px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.navLinks a:hover { color: var(--color-text-primary); background: rgba(0,0,0,0.05); }
+.navLinks a.active { color: var(--color-text-primary); background: rgba(0,0,0,0.06); }
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.navCart {
+  appearance: none;
+  border: none;
+  background: transparent;
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary);
+  transition: background 0.15s;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.navCart:hover { background: rgba(0,0,0,0.06); }
+.navCart svg   { width: 20px; height: 20px; }
+
+.cartBadge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--string-1);
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.navLogin {
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+  display: inline-block;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.navLogin:hover { opacity: 0.82; transform: translateY(-1px); }
+
+/* ─── Dropdown ────────────────────────────────────────────────── */
+.navDropdown {
+  position: relative;
+  list-style: none;
+}
+
+.navDropdownToggle {
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  padding: 6px 14px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.navDropdownToggle:hover,
+.navDropdownOpen .navDropdownToggle {
+  color: var(--color-text-primary);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.dropdownChevron {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.navDropdownOpen .dropdownChevron {
+  transform: rotate(180deg);
+}
+
+.navDropdownMenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 6px;
+  min-width: 160px;
+  list-style: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-6px);
+  transition: opacity 0.18s, transform 0.18s;
+  z-index: 200;
+}
+
+.navDropdownOpen .navDropdownMenu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.navDropdownMenu li { list-style: none; }
+
+.navDropdownMenu a {
+  display: block;
+  padding: 8px 14px;
+  border-radius: 9px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.navDropdownMenu a:hover,
+.navDropdownMenu a:focus {
+  color: var(--color-text-primary);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+  .navLinks { display: none; }
+}

@@ -1,0 +1,45 @@
+/* components/Outro/Outro.module.css */
+
+.outro {
+  position: relative;
+  z-index: 3;
+  padding: 30px 8vw 120px;
+  text-align: center;
+}
+
+.outro h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 6vw, 4.4rem);
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.outro p {
+  color: var(--color-text-muted);
+  max-width: 52ch;
+  margin: 0 auto 32px;
+  line-height: 1.55;
+  font-size: 1.05rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-primary);
+  color: var(--color-text-primary);
+  padding: 16px 28px;
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 6px 0 var(--color-primary-dark);
+}
+
+.btn:hover  { transform: translateY(-2px); box-shadow: 0 8px 0 var(--color-primary-dark); }
+.btn:active { transform: translateY(2px);  box-shadow: 0 2px 0 var(--color-primary-dark); }

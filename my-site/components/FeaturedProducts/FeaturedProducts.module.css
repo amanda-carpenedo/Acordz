@@ -1,0 +1,192 @@
+/* components/FeaturedProducts/FeaturedProducts.module.css */
+
+.section {
+  padding: 80px 24px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin: 0 0 48px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+.thumb {
+  height: 170px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.thumbImg {
+  object-fit:cover;
+  width: 100%;
+  height: 100%;
+}
+
+.thumb.jogos      { background: oklch(from var(--string-1) 90% 0.06 h); }
+.thumb.partituras { background: oklch(from var(--string-4) 90% 0.06 h); }
+.thumb.ebooks     { background: oklch(from var(--string-5) 90% 0.06 h); }
+.thumb.bundle     { background: oklch(from var(--string-3) 90% 0.06 h); }
+
+.body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-block;
+  align-self: flex-start;
+  color: white;
+}
+
+.badge_jogos      { background: var(--string-1); }
+.badge_partituras { background: var(--string-4); }
+.badge_ebooks     { background: var(--string-5); }
+.badge_bundle     { background: var(--string-3); }
+
+.productTitle {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.desc {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  flex: 1;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.footerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.addCartBtn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: color 0.15s, border-color 0.15s, background 0.15s, transform 0.1s;
+  flex-shrink: 0;
+}
+
+.addCartBtn:hover {
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary);
+  background: oklch(from var(--string-2) 96% 0.04 h);
+}
+
+.addCartBtn:active { transform: scale(0.9); }
+
+.price {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.btn {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.btn:hover { opacity: 0.7; }
+
+.cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-primary);
+  color: var(--color-text-primary);
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 0 var(--color-primary-dark);
+}
+
+.ctaBtn:hover  { transform: translateY(-2px); box-shadow: 0 6px 0 var(--color-primary-dark); }
+.ctaBtn:active { transform: translateY(2px);  box-shadow: 0 2px 0 var(--color-primary-dark); }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; }
+}

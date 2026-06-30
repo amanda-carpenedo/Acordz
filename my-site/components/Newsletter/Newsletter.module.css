@@ -1,0 +1,101 @@
+/* components/Newsletter/Newsletter.module.css */
+
+.section {
+  padding: 72px 24px;
+  background: linear-gradient(
+    135deg,
+    var(--string-6) 0%,
+    var(--string-1) 48%,
+    var(--string-2) 100%
+  );
+  text-align: center;
+}
+
+.container {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.container h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.75rem;
+  color: #fff;
+  margin: 0;
+}
+
+.container p {
+  color: rgba(255,255,255,0.88);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.input {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 13px 22px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255,255,255,0.95);
+  color: var(--color-text-primary);
+  width: 300px;
+  max-width: 100%;
+  outline: none;
+}
+
+.input::placeholder { color: var(--color-text-muted); }
+.input:focus {
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.4);
+}
+
+.btn {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 13px 28px;
+  border-radius: 999px;
+  border: none;
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.btn:hover { opacity: 0.86; transform: translateY(-1px); }
+
+.success {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 8px 0 0;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+@media (max-width: 480px) {
+  .form { flex-direction: column; align-items: center; }
+  .input { width: 100%; }
+  .btn { width: 100%; }
+}

@@ -1,0 +1,348 @@
+/* components/ProductPage/ProductPage.module.css */
+
+.main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 120px;
+}
+
+/* ── Breadcrumb ── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-bottom: 40px;
+}
+
+.breadcrumb a {
+  color: var(--color-text-muted);
+  transition: color 0.15s;
+}
+
+.breadcrumb a:hover { color: var(--color-text-primary); }
+
+/* ── Grid duas colunas ── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ── Coluna imagem ── */
+.imageCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.imageWrap[data-cat="jogos"]      { background: oklch(from var(--string-1) 96% 0.03 h); }
+.imageWrap[data-cat="partituras"] { background: oklch(from var(--string-4) 96% 0.03 h); }
+.imageWrap[data-cat="ebooks"]     { background: oklch(from var(--string-5) 96% 0.03 h); }
+.imageWrap[data-cat="bundle"]     { background: oklch(from var(--string-3) 96% 0.03 h); }
+
+/* placeholder quando não há imagem */
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--color-text-muted);
+}
+
+.placeholder svg {
+  width: 56px;
+  height: 56px;
+  opacity: 0.4;
+}
+
+.placeholder span {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+}
+
+/* badge garantia */
+.guarantee {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+}
+
+.guarantee svg {
+  width: 28px;
+  height: 28px;
+  color: var(--string-3);
+  flex-shrink: 0;
+}
+
+.guarantee div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.guarantee strong {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.guarantee span {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Coluna info ── */
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--color-bg);
+  background: var(--color-primary);
+  padding: 6px 14px;
+  border-radius: 999px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* specs */
+.specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+}
+
+.spec {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.specLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.specValue {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+/* preço */
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 24px 0;
+  border-top: 1.5px dashed var(--color-border);
+  border-bottom: 1.5px dashed var(--color-border);
+}
+
+.originalPrice {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.priceCurrency {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.priceValue {
+  font-family: var(--font-mono);
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.priceLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* botão comprar */
+.buyActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.buyButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--color-primary);
+  color: var(--color-text-primary);
+  padding: 18px 28px;
+  border-radius: 999px;
+  border: none;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 6px 0 var(--color-primary-dark);
+  width: 100%;
+}
+
+.buyButton:hover  { transform: translateY(-2px); box-shadow: 0 8px 0 var(--color-primary-dark); }
+.buyButton:active { transform: translateY(2px);  box-shadow: 0 2px 0 var(--color-primary-dark); }
+
+.viewCartLink {
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  transition: opacity 0.15s;
+}
+
+.viewCartLink:hover { opacity: 0.7; }
+
+.downloadNote {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin: -12px 0 0;
+}
+
+/* o que está incluso */
+.includes {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 20px 24px;
+}
+
+.includes h3 {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 14px;
+}
+
+.includes ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.includes li {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.includes li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .imageCol {
+    position: static;
+  }
+
+  .specs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .specs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .priceValue {
+    font-size: 2.8rem;
+  }
+}

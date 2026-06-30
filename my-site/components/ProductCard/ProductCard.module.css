@@ -1,0 +1,153 @@
+/* components/ProductCard/ProductCard.module.css */
+
+/* trecho do ProductCard.module.css — só o .card, sem animação */
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  padding: 28px 28px 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  z-index: 4;
+  box-shadow: 0 20px 50px oklch(40% 0.05 60 / 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.card[data-cat="jogos"]      { --cat: var(--string-1); }
+.card[data-cat="partituras"] { --cat: var(--string-4); }
+.card[data-cat="ebooks"]     { --cat: var(--string-5); }
+.card[data-cat="bundle"]     { --cat: var(--string-3); }
+
+/* classe adicionada pelo IntersectionObserver */
+:global(.stop.in) .card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--color-bg);
+  background: var(--cat);
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  margin: 0 0 8px;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--color-text-primary);
+}
+
+.sub {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 10px 0 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 6px 0 18px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.specs div span {
+  display: block;
+  color: var(--color-text-primary);
+  font-size: 0.95rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  margin-top: 4px;
+}
+
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1.5px dashed var(--color-border);
+  padding-top: 16px;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.price {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+}
+
+.strike {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+  margin-right: 8px;
+}
+
+.price small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-primary);
+  color: var(--color-text-primary);
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 0 var(--color-primary-dark);
+  text-decoration: none;
+}
+
+.cta:hover  { transform: translateY(-2px); box-shadow: 0 6px 0 var(--color-primary-dark); }
+.cta:active { transform: translateY(2px);  box-shadow: 0 2px 0 var(--color-primary-dark); }
+
+.cta svg { width: 12px; height: 12px; }
+
+@media (max-width: 880px) {
+  .card {
+    width: 100%;
+    max-width: 460px;
+  }
+}

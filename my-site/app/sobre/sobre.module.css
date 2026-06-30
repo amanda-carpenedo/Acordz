@@ -1,0 +1,139 @@
+/* app/sobre/sobre.module.css */
+
+.main {
+  min-height: calc(100vh - var(--nav-height));
+  padding: 5rem 1.5rem;
+  background: var(--color-bg);
+}
+
+/* ── About section ────────────────────────────────────────────── */
+
+.section {
+  max-width: 60%;
+  margin: 0 auto 5rem;
+  padding: 2rem 0;
+}
+
+.duo {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  position: relative;
+}
+
+/* Card branco levemente inclinado */
+.card {
+  flex: 1;
+  background: var(--color-surface);
+  border-radius: 10px;
+  padding: 2.75rem 3rem;
+  box-shadow: 0 10px 48px rgba(0, 0, 0, 0.1);
+  transform: rotate(-3deg);
+  transition: transform 0.35s ease;
+}
+
+.card:hover {
+  transform: rotate(-1deg);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.textBox {
+  min-height: 130px;
+  border: 2px dashed var(--color-border);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.textBox p + p {
+  margin-top: 1rem;
+}
+
+/* Coluna com personagem + card de fundadora */
+.character {
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.characterImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Founder card ─────────────────────────────────────────────── */
+
+.founderCard {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--color-surface);
+  border-radius: 10px;
+  padding: 1.25rem 2.5rem;
+  box-shadow: 0 10px 48px rgba(0, 0, 0, 0.1);
+  transform: rotate(2deg);
+  transition: transform 0.35s ease;
+}
+
+.founderCard:hover {
+  transform: rotate(0.5deg);
+}
+
+.founderName {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  margin: 0 0 0.25rem;
+}
+
+.founderRole {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--string-2);
+  margin: 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .section {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 700px) {
+  .duo {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .card {
+    width: 100%;
+    transform: rotate(-2deg);
+  }
+
+  .character {
+    width: 100%;
+    order: -1;
+  }
+}

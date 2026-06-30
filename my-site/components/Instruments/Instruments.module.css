@@ -1,0 +1,162 @@
+/* components/Instruments/Instruments.module.css */
+
+.section {
+  padding: 56px 0;
+  background: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.section:has(.violaoWrapper:hover)::before  { background: oklch(94% 0.04 260); }
+.section:has(.pianoWrapper:hover)::before   { background: oklch(94% 0.04 310); }
+.section:has(.flautaWrapper:hover)::before  { background: oklch(95% 0.06 70);  }
+.section:has(.ukuleleWrapper:hover)::before { background: oklch(94% 0.05 25);  }
+
+.section:has(*:hover)::before { transform: scaleX(1); }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin: 0 0 48px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  align-items: end;
+}
+
+/* ── Card base ── */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 30px 16px;
+  border-radius: 16px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  z-index: 2;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.16);
+}
+
+.violao  { background: oklch(68% 0.18 260); }
+.piano   { background: oklch(68% 0.18 310); }
+.flauta  { background: oklch(68% 0.18 70);  }
+.ukulele { background: oklch(68% 0.18 25);  }
+
+/* ── Wrapper base ── */
+.wrapper { position: relative; }
+
+.char,
+.hands {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: top 0.2s ease, opacity 0.2s ease;
+}
+
+.char  { z-index: 1; }
+.hands {
+  z-index: 4;
+  clip-path: inset(30% 0% 0% 0%);
+}
+
+/* ── Violão ── */
+.violaoWrapper { padding-top: 165px; }
+
+.violaoChar,
+.violaoHands {
+  aspect-ratio: 413 / 264;
+  top: 120px;
+}
+
+.violaoWrapper:hover .violaoChar,
+.violaoWrapper:hover .violaoHands {
+  top: 20px;
+  opacity: 1;
+}
+
+/* ── Piano ── */
+.pianoWrapper { padding-top: 170px; }
+
+.pianoChar,
+.pianoHands {
+  aspect-ratio: 410 / 262;
+  top: 120px;
+}
+
+.pianoWrapper:hover .pianoChar,
+.pianoWrapper:hover .pianoHands {
+  top: 20px;
+  opacity: 1;
+}
+
+/* ── Flauta ── */
+.flautaWrapper { padding-top: 173px; }
+
+.flautaChar,
+.flautaHands {
+  aspect-ratio: 412 / 268;
+  top: 120px;
+}
+
+.flautaWrapper:hover .flautaChar,
+.flautaWrapper:hover .flautaHands {
+  top: 20px;
+  opacity: 1;
+}
+
+/* ── Ukulele ── */
+.ukuleleWrapper { padding-top: 125px; }
+
+.ukuleleChar,
+.ukuleleHands {
+  aspect-ratio: 541 / 251;
+  top: 120px;
+}
+
+.ukuleleWrapper:hover .ukuleleChar,
+.ukuleleWrapper:hover .ukuleleHands {
+  top: 20px;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
