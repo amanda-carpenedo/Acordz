@@ -147,7 +147,7 @@ export const products: Product[] = [
     tag: 'Combo Professor',
     name: 'Combo Professor',
     description: 'Tudo que o professor de música precisa: jogos, partituras e ebooks para montar uma aula completa e divertida.',
-    image: null, // placeholder
+    image: null,
     specs: [
       { label: 'Itens',    value: '6 produtos' },
       { label: 'Economia', value: 'R$ 80' },
@@ -205,7 +205,7 @@ export const stops: StopData[] = [
   {
     stopNumber: '04',
     side: 'left',
-    productSlugs: ['combo-casa-toda-tocando', 'combo-professor'],
+    productSlugs: ['casa-toda-tocando', 'combo-professor'],
     character: {
       name: 'funky',
       image: '/personagens/funky-sentada.svg',

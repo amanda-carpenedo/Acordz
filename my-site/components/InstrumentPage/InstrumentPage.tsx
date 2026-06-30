@@ -95,7 +95,7 @@ export default function InstrumentPage({
       const progress = Math.min(Math.max(window.scrollY / heroH, 0), 1)
       const tx = (1 - progress) * 100
       const ty = -(1 - progress) * heroH
-      catalogEl!.style.transform = `translateX(${tx}%) translateY(${ty}px)`
+      catalogEl!.style.transform = `translate3d(${tx}%, ${ty}px, 0)`
       ticking = false
     }
 

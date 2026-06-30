@@ -174,5 +174,6 @@
   .char, .hands {
     opacity: 1;
     top: 67px;
+    transition: none;
   }
 }
