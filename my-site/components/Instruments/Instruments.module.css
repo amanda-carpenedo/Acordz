@@ -160,3 +160,19 @@
 @media (max-width: 768px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; }
+
+  /* padding-top = (card_width × img_h/img_w) + top_offset */
+  /* card_width = 100vw − 48px (24px padding × 2)          */
+  .violaoWrapper  { padding-top: calc((100vw - 48px) * 264 / 413 + 34px); }
+  .pianoWrapper   { padding-top: calc((100vw - 48px) * 262 / 410 + 34px); }
+  .flautaWrapper  { padding-top: calc((100vw - 48px) * 268 / 412 + 34px); }
+  .ukuleleWrapper { padding-top: calc((100vw - 35px) * 251 / 541 + 34px); }
+
+  .char, .hands {
+    opacity: 1;
+    top: 67px;
+  }
+}

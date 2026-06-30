@@ -122,6 +122,12 @@
 }
 
 @media (max-width: 700px) {
+
+.main {
+  padding: 2rem 1.5rem;
+
+}
+
   .duo {
     flex-direction: column;
     gap: 1.5rem;
@@ -130,10 +136,10 @@
   .card {
     width: 100%;
     transform: rotate(-2deg);
+    padding: 2rem 1rem;
   }
 
   .character {
     width: 100%;
-    order: -1;
   }
 }

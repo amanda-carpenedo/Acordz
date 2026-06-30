@@ -93,5 +93,12 @@
   .inner {
     grid-template-columns: 1fr;
     gap: 32px;
+    text-align: center;
   }
+
+  .tagline { max-width: 100%; }
+
+  .social { justify-content: center; }
+
+  .col nav { align-items: center; }
 }
