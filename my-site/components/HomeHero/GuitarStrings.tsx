@@ -18,52 +18,54 @@ const PALETTE = { bg: '#FBF6EC', ink: '#2A2418', sat: 0.16, light: 0.65 }
 
 let _audioCtx: AudioContext | null = null
 
-function playPluck(freq: number, volume = 0.5) {
-  if (!_audioCtx) {
-    const Ctx = window.AudioContext || (window as any).webkitAudioContext
-    if (!Ctx) return
-    _audioCtx = new Ctx()
-  }
-  const ctx = _audioCtx
+function getOrCreateCtx(): AudioContext | null {
+  if (_audioCtx) return _audioCtx
+  const Ctx = window.AudioContext || (window as any).webkitAudioContext
+  if (!Ctx) return null
+  _audioCtx = new Ctx()
+  return _audioCtx
+}
 
-  const schedule = () => {
-    const now = ctx.currentTime
+function scheduleNote(ctx: AudioContext, freq: number, volume: number) {
+  const now = ctx.currentTime
+  const out = ctx.createGain()
+  out.gain.setValueAtTime(0, now)
+  out.gain.linearRampToValueAtTime(volume, now + 0.005)
+  out.gain.exponentialRampToValueAtTime(0.0001, now + 1.6)
 
-    const out = ctx.createGain()
-    out.gain.setValueAtTime(0, now)
-    out.gain.linearRampToValueAtTime(volume, now + 0.005)
-    out.gain.exponentialRampToValueAtTime(0.0001, now + 1.6)
+  const filt = ctx.createBiquadFilter()
+  filt.type = 'lowpass'
+  filt.frequency.setValueAtTime(freq * 8, now)
+  filt.frequency.exponentialRampToValueAtTime(freq * 2, now + 1.2)
+  filt.Q.value = 4
 
-    const filt = ctx.createBiquadFilter()
-    filt.type = 'lowpass'
-    filt.frequency.setValueAtTime(freq * 8, now)
-    filt.frequency.exponentialRampToValueAtTime(freq * 2, now + 1.2)
-    filt.Q.value = 4
+  const o1 = ctx.createOscillator()
+  o1.type = 'triangle'
+  o1.frequency.value = freq
 
-    const o1 = ctx.createOscillator()
-    o1.type = 'triangle'
-    o1.frequency.value = freq
+  const o2 = ctx.createOscillator()
+  o2.type = 'sawtooth'
+  o2.frequency.value = freq * 2.003
+  const o2g = ctx.createGain()
+  o2g.gain.value = 0.18
 
-    const o2 = ctx.createOscillator()
-    o2.type = 'sawtooth'
-    o2.frequency.value = freq * 2.003
-    const o2g = ctx.createGain()
-    o2g.gain.value = 0.18
+  o1.connect(filt)
+  o2.connect(o2g).connect(filt)
+  filt.connect(out).connect(ctx.destination)
 
-    o1.connect(filt)
-    o2.connect(o2g).connect(filt)
-    filt.connect(out).connect(ctx.destination)
+  o1.start(now); o2.start(now)
+  o1.stop(now + 1.7); o2.stop(now + 1.7)
+}
 
-    o1.start(now); o2.start(now)
-    o1.stop(now + 1.7); o2.stop(now + 1.7)
-  }
-
-  // resume() só funciona em contexto de gesto confiável (click/touch)
-  // após o primeiro clique o contexto fica 'running' e hovers funcionam
-  if (ctx.state === 'suspended') {
-    ctx.resume().then(schedule)
-  } else {
-    schedule()
+// fromGesture = true em clicks/touch → force resume + toca
+// fromGesture = false em mousemove → toca só se já rodando (evita burst)
+function playPluck(freq: number, volume = 0.5, fromGesture = false) {
+  const ctx = getOrCreateCtx()
+  if (!ctx) return
+  if (ctx.state === 'running') {
+    scheduleNote(ctx, freq, volume)
+  } else if (fromGesture) {
+    ctx.resume().then(() => scheduleNote(ctx, freq, volume))
   }
 }
 
@@ -190,7 +192,22 @@ export default function GuitarStrings({
     return () => ro.disconnect()
   }, [])
 
-  const triggerPluck = useCallback((idx: number, x: number, y: number, intensity = 1) => {
+  // desbloqueia AudioContext no primeiro gesto em qualquer lugar da página
+  // assim hover nas cordas já funciona após qualquer clique (não só no violão)
+  useEffect(() => {
+    const unlock = () => {
+      const ctx = getOrCreateCtx()
+      if (ctx && ctx.state === 'suspended') ctx.resume()
+    }
+    document.addEventListener('click', unlock, { once: true, capture: true })
+    document.addEventListener('touchstart', unlock, { once: true, capture: true })
+    return () => {
+      document.removeEventListener('click', unlock, true)
+      document.removeEventListener('touchstart', unlock, true)
+    }
+  }, [])
+
+  const triggerPluck = useCallback((idx: number, x: number, y: number, intensity = 1, fromGesture = false) => {
     if (idx < 0 || idx >= STRINGS.length) return
     const note = STRINGS[idx]
     const amp = (24 + 18 * (1 - idx / (STRINGS.length - 1))) * (0.5 + 0.5 * intensity)
@@ -199,7 +216,7 @@ export default function GuitarStrings({
       omega: 6 + (idx / (STRINGS.length - 1)) * 16,
       damping: 2.4, duration: 1.6,
     }
-    if (audioOnRef.current) playPluck(note.freq, 0.18 + 0.22 * intensity)
+    if (audioOnRef.current) playPluck(note.freq, 0.18 + 0.22 * intensity, fromGesture)
 
     const now = performance.now()
     const count = Math.round(8 + 8 * intensity)
@@ -278,7 +295,7 @@ export default function GuitarStrings({
       if (d < bestD) { bestD = d; best = i }
     }
     if (bestD > 80) return
-    triggerPluck(best, x, ys[best], 1)
+    triggerPluck(best, x, ys[best], 1, true)
   }
 
   useEffect(() => {
