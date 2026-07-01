@@ -18,48 +18,53 @@ const PALETTE = { bg: '#FBF6EC', ink: '#2A2418', sat: 0.16, light: 0.65 }
 
 let _audioCtx: AudioContext | null = null
 
-function getAudio() {
+function playPluck(freq: number, volume = 0.5) {
   if (!_audioCtx) {
     const Ctx = window.AudioContext || (window as any).webkitAudioContext
-    if (!Ctx) return null
+    if (!Ctx) return
     _audioCtx = new Ctx()
   }
-  if (_audioCtx.state === 'suspended') _audioCtx.resume()
-  return _audioCtx
-}
+  const ctx = _audioCtx
 
-function playPluck(freq: number, volume = 0.5) {
-  const ctx = getAudio()
-  if (!ctx) return
-  const now = ctx.currentTime
+  const schedule = () => {
+    const now = ctx.currentTime
 
-  const out = ctx.createGain()
-  out.gain.setValueAtTime(0, now)
-  out.gain.linearRampToValueAtTime(volume, now + 0.005)
-  out.gain.exponentialRampToValueAtTime(0.0001, now + 1.6)
+    const out = ctx.createGain()
+    out.gain.setValueAtTime(0, now)
+    out.gain.linearRampToValueAtTime(volume, now + 0.005)
+    out.gain.exponentialRampToValueAtTime(0.0001, now + 1.6)
 
-  const filt = ctx.createBiquadFilter()
-  filt.type = 'lowpass'
-  filt.frequency.setValueAtTime(freq * 8, now)
-  filt.frequency.exponentialRampToValueAtTime(freq * 2, now + 1.2)
-  filt.Q.value = 4
+    const filt = ctx.createBiquadFilter()
+    filt.type = 'lowpass'
+    filt.frequency.setValueAtTime(freq * 8, now)
+    filt.frequency.exponentialRampToValueAtTime(freq * 2, now + 1.2)
+    filt.Q.value = 4
 
-  const o1 = ctx.createOscillator()
-  o1.type = 'triangle'
-  o1.frequency.value = freq
+    const o1 = ctx.createOscillator()
+    o1.type = 'triangle'
+    o1.frequency.value = freq
 
-  const o2 = ctx.createOscillator()
-  o2.type = 'sawtooth'
-  o2.frequency.value = freq * 2.003
-  const o2g = ctx.createGain()
-  o2g.gain.value = 0.18
+    const o2 = ctx.createOscillator()
+    o2.type = 'sawtooth'
+    o2.frequency.value = freq * 2.003
+    const o2g = ctx.createGain()
+    o2g.gain.value = 0.18
 
-  o1.connect(filt)
-  o2.connect(o2g).connect(filt)
-  filt.connect(out).connect(ctx.destination)
+    o1.connect(filt)
+    o2.connect(o2g).connect(filt)
+    filt.connect(out).connect(ctx.destination)
 
-  o1.start(now); o2.start(now)
-  o1.stop(now + 1.7); o2.stop(now + 1.7)
+    o1.start(now); o2.start(now)
+    o1.stop(now + 1.7); o2.stop(now + 1.7)
+  }
+
+  // resume() só funciona em contexto de gesto confiável (click/touch)
+  // após o primeiro clique o contexto fica 'running' e hovers funcionam
+  if (ctx.state === 'suspended') {
+    ctx.resume().then(schedule)
+  } else {
+    schedule()
+  }
 }
 
 function hueToColor(hue: number, sat: number, light: number) {
@@ -67,7 +72,7 @@ function hueToColor(hue: number, sat: number, light: number) {
 }
 
 function buildPath(
-  width: number, height: number, y0: number,
+  width: number, _height: number, y0: number,
   mouse: { x: number; y: number } | null,
   pluck: any, t: number, ambient: number, hoverRadius: number
 ) {
